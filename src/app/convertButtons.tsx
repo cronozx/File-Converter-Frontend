@@ -11,9 +11,17 @@ export const SelectElement: React.FC<SelectProps> = ({ file, uniqueKey, setType 
     const convertTypes: string[] = useMemo(() => {
         switch (file.type) {
             case 'image/gif':
-                return ['jpg', 'png', 'webp'];
+                return ['jpg', 'png', 'webp', 'svg'];
             case 'image/jpeg':
-                return ['gif', 'png', 'webp'];
+                return ['png', 'svg', 'webp', 'gif'];
+            case 'image/png':
+                return ['jpg', 'svg', 'webp', 'gif'];
+            case 'image/svg':
+                return ['jpg', 'png', 'webp', 'gif'];
+            case 'application/pdf':
+                return ['jpg', 'png', 'svg', 'webp', 'txt', 'html', 'docx']
+            case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+                return ['pdf', 'txt', 'html', 'odt', 'jpg', 'png,', 'webp', 'pptx'];
             default:
                 return [];
         }

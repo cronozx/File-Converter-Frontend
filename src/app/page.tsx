@@ -77,23 +77,23 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <header className="title text-lg font-extrabold drop-shadow-(--glow)">File Converter</header>
+    <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8">
+      <header className="title text-lg sm:text-xl lg:text-2xl font-extrabold drop-shadow-(--glow) mt-4 sm:mt-6 lg:mt-8">File Converter</header>
 
-      <div className="upload-box-title text-lg font-bold mt-40 drop-shadow-(--glow)">Upload (100MB Limit)</div>
-      <div className="upload-box dropzone transition duration-[1s] ease-in-out hover:bg-black-900 w-2/5 h-[24rem] flex justify-center bg-transparent rounded-sm border-dashed border-black-foreground border-5 z-2 mt-2" {...getRootProps()}>
+      <div className="upload-box-title text-lg sm:text-xl lg:text-2xl font-bold mt-10 sm:mt-20 lg:mt-40 drop-shadow-(--glow)">Upload (100MB Limit)</div>
+      <div className="upload-box dropzone transition duration-[1s] ease-in-out hover:bg-black-900 w-full sm:w-3/4 lg:w-2/5 h-64 sm:h-80 lg:h-[24rem] flex justify-center bg-transparent rounded-sm border-dashed border-black-foreground border-5 z-2 mt-2" {...getRootProps()}>
         <input {...getInputProps()}></input>
-        <div className="upload-box-desc mt-40 text-center">Drag and Drop Files Here <br></br> Or Click to Upload Files</div>
-        <div className="upload-error-warn absolute mt-56 text-center font-bold text-red-600 hidden">File Size to Big</div>
+        <div className="upload-box-desc mt-16 sm:mt-24 lg:mt-40 text-center">Drag and Drop Files Here <br></br> Or Click to Upload Files</div>
+        <div className="upload-error-warn absolute mt-20 sm:mt-32 lg:mt-56 text-center font-bold text-red-600 hidden">File Size to Big</div>
       </div>
-        <h2 className="uploaded-files-header mt-[35vh] font-bold drop-shadow-(--glow)">Uploaded Files:</h2>
-        <div className="uploaded-files-container w-2/5 h-[50vh] text-center rounded-sm border-solid border-black-foreground border-5">
+        <h2 className="uploaded-files-header mt-20 sm:mt-28 lg:mt-[35vh] font-bold drop-shadow-(--glow)">Uploaded Files:</h2>
+        <div className="uploaded-files-container w-full sm:w-3/4 lg:w-2/5 h-64 sm:h-80 lg:h-[50vh] text-center rounded-sm border-solid border-black-foreground border-5">
           <ul className="uploaded-files">
             {files.map((file, index) => {
               const uniqueKey = `${file.name}_${file.type}_${index}`;
               return (
                 <li key={uniqueKey} className="flex items-center justify-between mt-1">
-                  <div className="file-name-container font-bold text-left text-xs w-1/3 truncate ml-1">File Name: {file.name}</div>
+                  <div className="file-name-container font-bold text-left text-xs sm:text-sm lg:text-base w-1/3 truncate ml-1">File Name: {file.name}</div>
                   <SelectElement file={file} uniqueKey={uniqueKey} setType={setSelectedTypes}/>
                   <div className="flex items-center gap-2 mr-1">
                     <Button className="submit-button text-black-950 bg-black-50 hover:bg-black-500" variant="contained" sx={{backgroundColor: 'white', color: 'black'}} startIcon={<CheckIcon/>} onClick={() => {handleSubmit(file, selectedTypes[uniqueKey])}}>Convert</Button>
